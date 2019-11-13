@@ -1,0 +1,17 @@
+
+<% if @appointment %>
+
+  <h1>Appointment for <a href="/patients/<%= @appointment.patient.id %>"><%= @appointment.patient.name %></a></h1>
+
+  <h2>Date: <%= @appointment.appointment_datetime.strftime("%a %B %e, %Y") %></h2>
+
+  <h3>Time: <%= @appointment.appointment_datetime.strftime("%T") %></h3>
+
+
+  <h4>Doctor: <a href="/doctors/<%= @appointment.doctor.id %>"><%= @appointment.doctor.name %></a></h4>
+
+<% else %>
+
+  <h1>No Appointment Found!</h1>
+
+<% end %>

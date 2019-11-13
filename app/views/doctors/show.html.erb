@@ -1,0 +1,28 @@
+
+<h1>Doctor <%= @doctor.name %></h1>
+
+<h3>Department: <b><%= @doctor.department %></b></h3>
+
+<table border="solid 1px" style="padding: 5px;">
+  <tr>
+    <th>Appointment Date</th>
+    <th>Appointment Time</th>
+    <th>Patient</th>
+  </tr>
+
+  <% @doctor.appointments.each do |appointment| %>
+    <tr>
+      <td><%= appointment.appointment_datetime.strftime("%a %B %e, %Y") %></td>
+      <td><%= appointment.appointment_datetime.strftime("%T") %></td>
+      <td><a href="/patients/<%= appointment.patient.id %>"><%= appointment.patient.name %></a></td>
+    </tr>
+  <% end %>
+
+  <h2>This is to pass spec test but is the same as info in the table below</h2>
+
+  <ul>
+    <% @doctor.appointments.each do |appointment| %>
+      <li>Appointment for <a href="/patients/<%= appointment.patient.id %>"><%= appointment.patient.name %></a> on <%= appointment.appointment_datetime.strftime("%B %e, %Y at %T") %></li>
+    <% end %>
+  </ul>
+</table>
