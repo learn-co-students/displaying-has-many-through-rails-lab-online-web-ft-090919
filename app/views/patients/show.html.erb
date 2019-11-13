@@ -1,0 +1,33 @@
+<h1>Patient Name:</h1>
+<h3><%= @patient.name %></h3>
+
+<h2>Appointments</h2>
+
+<ul>
+  <% @patient.appointments.each do |appointment| %>
+    <li>
+      Appointment on <%= appointment.appointment_datetime.strftime("%B %e, %Y at %k:%M") %> with <a href="/doctors/<%= appointment.doctor.id %>">Dr. <%= appointment.doctor.name %></a>
+    </li>
+  <% end %>
+</ul>
+
+
+<h2>Same data in table form</h2>
+
+<table border style="border: 3px solid black;">
+  <tr>
+    <th>Appointment Date</th>
+    <th>Appointment Time</th>
+    <th>Doctor</th>
+  </tr>
+
+  <% @patient.appointments.each do |appointment| %>
+
+    <tr>
+      <td><%= appointment.appointment_datetime.strftime("%a %B %e, %Y") %></td>
+      <td><%= appointment.appointment_datetime.strftime("%T") %></td>
+      <td><a href="/doctors/<%= appointment.doctor.id %>"><%= appointment.doctor.name %></a></td>
+    </tr>
+
+  <% end %>
+</table>
