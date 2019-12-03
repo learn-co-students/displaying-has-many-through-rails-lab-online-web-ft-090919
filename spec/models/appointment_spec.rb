@@ -19,5 +19,4 @@ describe 'Appointment' do
   it 'belongs to a doctor' do
     expect(@appointment.patient).to be(@patient)
   end
-
 end
